@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUM Training Centre - Computer Packages & Languages</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-teal: #2D5F5D;
+            --dark-teal: #1A3D3F;
+            --golden: #C9A961;
+            --light-gold: #D4AF37;
+            --cream: #F5E6D3;
+            --white: #ffffff;
+            --light-gray: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .top-bar {
+            background: var(--dark-teal);
+            color: var(--white);
+            padding: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .top-bar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .top-bar a {
+            color: var(--golden);
+            text-decoration: none;
+            margin-left: 20px;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+        }
+
+        .logo-text h1 {
+            color: var(--dark-teal);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo-text p {
+            color: var(--primary-teal);
+            font-size: 0.9rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: var(--dark-teal);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--golden);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-teal);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-teal) 0%, var(--primary-teal) 100%);
+            color: var(--white);
+            padding: 150px 20px 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="10" cy="10" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            color: var(--cream);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--golden);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--light-gold);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--dark-teal);
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 20px;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            color: var(--golden);
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .section-title {
+            color: var(--dark-teal);
+            font-size: 2.5rem;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        .section-description {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .feature-card {
+            padding: 30px;
+            background: var(--light-gray);
+            border-radius: 10px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card h3 {
+            color: var(--dark-teal);
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Courses Section */
+        .courses {
+            padding: 80px 20px;
+            background: var(--light-gray);
+        }
+
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .course-card {
+            background: var(--white);
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .course-header {
+            background: linear-gradient(135deg, var(--primary-teal), var(--dark-teal));
+            color: var(--white);
+            padding: 20px;
+            margin: -40px -40px 30px -40px;
+            border-radius: 10px 10px 0 0;
+            text-align: center;
+        }
+
+        .course-header h3 {
+            font-size: 1.8rem;
+        }
+
+        .course-list {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+
+        .course-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            color: #555;
+            display: flex;
+            align-items: center;
+        }
+
+        .course-list li:before {
+            content: "✓";
+            color: var(--golden);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .course-footer {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid var(--cream);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 80px 20px;
+            background: var(--white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background: var(--white);
+            border: 2px solid var(--cream);
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .pricing-card:hover {
+            border-color: var(--golden);
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .pricing-card.featured {
+            background: linear-gradient(135deg, var(--primary-teal), var(--dark-teal));
+            color: var(--white);
+            border: none;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-teal);
+        }
+
+        .pricing-card.featured h3 {
+            color: var(--white);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--golden);
+            margin: 20px 0;
+        }
+
+        .price-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+
+        .pricing-card.featured .price-label {
+            color: var(--cream);
+        }
+
+        .price-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .price-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .pricing-card.featured .price-features li {
+            border-bottom-color: rgba(255,255,255,0.2);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 20px;
+            background: var(--light-gray);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 25px;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--golden);
+        }
+
+        .contact-item h4 {
+            color: var(--dark-teal);
+            margin-bottom: 5px;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--dark-teal);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-teal);
+            color: var(--white);
+            padding: 40px 20px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--cream);
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            color: var(--golden);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-grid,
+            .courses-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="top-bar">
+            <div class="container">
+                <div>📧 info@nexumtraining.co.ke</div>
+                <div>📞 <a href="tel:0119046246">0119 046 246</a></div>
+            </div>
+        </div>
+        <nav>
+            <div class="logo">
+                <svg class="logo-img" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="25" cy="25" r="8" fill="#C9A961"/>
+                    <circle cx="75" cy="25" r="8" fill="#2D5F5D"/>
+                    <circle cx="25" cy="75" r="8" fill="#C9A961"/>
+                    <circle cx="75" cy="75" r="8" fill="#2D5F5D"/>
+                    <line x1="25" y1="25" x2="75" y2="75" stroke="#C9A961" stroke-width="4"/>
+                    <line x1="75" y1="25" x2="25" y2="75" stroke="#2D5F5D" stroke-width="4"/>
+                </svg>
+                <div class="logo-text">
+                    <h1>NEXUM</h1>
+                    <p>Training Centre</p>
+                </div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#courses">Courses</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h2>Empower Your Future with Technology</h2>
+            <p>Master computer packages, learn new languages, and excel in your studies with expert training</p>
+            <div class="cta-buttons">
+                <a href="#courses" class="btn btn-primary">Explore Courses</a>
+                <a href="#contact" class="btn btn-secondary">Get Started</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">About NEXUM</p>
+                <h2 class="section-title">Building Skills for Success</h2>
+                <p class="section-description">NEXUM Training Centre is your gateway to mastering essential computer skills, learning new languages, and achieving academic excellence through our comprehensive training programs.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">💻</div>
+                    <h3>Expert Instructors</h3>
+                    <p>Learn from experienced professionals who are passionate about technology and education.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Learning Materials</h3>
+                    <p>Access comprehensive learning materials and resources to support your journey.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🌐</div>
+                    <h3>Free Wi-Fi</h3>
+                    <p>Stay connected with complimentary internet access during your training sessions.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎓</div>
+                    <h3>Certification</h3>
+                    <p>Receive official certificates upon successful completion of your courses.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="courses">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Our Programs</p>
+                <h2 class="section-title">Comprehensive Training Solutions</h2>
+            </div>
+            <div class="courses-grid">
+                <!-- Computer Packages -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>Computer Packages</h3>
+                    </div>
+                    <ul class="course-list">
+                        <li>Introduction to Computers</li>
+                        <li>Microsoft Windows OS</li>
+                        <li>Word Processing (MS Word)</li>
+                        <li>Data Entry (MS Excel)</li>
+                        <li>Presentations (MS PowerPoint)</li>
+                        <li>Designing (MS Publisher)</li>
+                        <li>Databases (MS Access)</li>
+                        <li>Internet and Email</li>
+                        <li>Graphic Design (Canva)</li>
+                        <li>Typing Skills</li>
+                    </ul>
+                    <div class="course-footer">
+                        <strong>Duration:</strong> 1-2 months (5-8 weeks)<br>
+                        <strong>Certificate:</strong> Awarded upon completion
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>Language Courses</h3>
+                    </div>
+                    <ul class="course-list">
+                        <li>🇬🇧 English Language</li>
+                        <li>🇰🇪 Kiswahili</li>
+                        <li>🇫🇷 French Language</li>
+                        <li>🇸🇦 Arabic Language</li>
+                    </ul>
+                    <div class="course-footer">
+                        <strong>Monthly:</strong> KSh 3,000 - 3,500<br>
+                        <strong>Per Term:</strong> KSh 9,000 - 10,500<br>
+                        <strong>Adult Education:</strong> KSh 9,000/term
+                    </div>
+                </div>
+
+                <!-- Holiday Tuition -->
+                <div class="course-card">
+                    <div class="course-header">
+                        <h3>Holiday Tuition</h3>
+                    </div>
+                    <ul class="course-list">
+                        <li>Grade 1 - Grade 6 (G1-G6)</li>
+                        <li>Junior Secondary School (JSS)</li>
+                        <li>Form 3 - Form 4</li>
+                    </ul>
+                    <div class="course-footer">
+                        <strong>G1-G6:</strong> KSh 200/day<br>
+                        <strong>JSS:</strong> KSh 250/day<br>
+                        <strong>Form 3-4:</strong> KSh 250/day<br>
+                        <strong>Fees:</strong> Admission KSh 500 | Exam KSh 500
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Affordable Pricing</p>
+                <h2 class="section-title">Flexible Payment Options</h2>
+                <p class="section-description">We offer competitive rates with the option to pay in installments</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Computer Packages</h3>
+                    <div class="price">4,000</div>
+                    <p class="price-label">KSh - Tuition Fee</p>
+                    <ul class="price-features">
+                        <li>Registration: KSh 500</li>
+                        <li>Exam Fee: KSh 500</li>
+                        <li>1-2 months duration</li>
+                        <li>Learning materials included</li>
+                        <li>Free Wi-Fi access</li>
+                        <li>Certificate provided</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Enroll Now</a>
+                </div>
+
+                <div class="pricing-card featured">
+                    <h3>Language Courses</h3>
+                    <div class="price">3,000+</div>
+                    <p class="price-label">KSh - Per Month</p>
+                    <ul class="price-features">
+                        <li>English: KSh 3,000/month</li>
+                        <li>Kiswahili: KSh 3,000/month</li>
+                        <li>Arabic: KSh 3,500/month</li>
+                        <li>French: KSh 3,500/month</li>
+                        <li>Term rates available</li>
+                        <li>Free Wi-Fi access</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Enroll Now</a>
+                </div>
+
+                <div class="pricing-card">
+                    <h3>Holiday Tuition</h3>
+                    <div class="price">200+</div>
+                    <p class="price-label">KSh - Per Day</p>
+                    <ul class="price-features">
+                        <li>G1-G6: KSh 200/day</li>
+                        <li>JSS: KSh 250/day</li>
+                        <li>Form 3-4: KSh 250/day</li>
+                        <li>Admission: KSh 500</li>
+                        <li>Examination: KSh 500</li>
+                        <li>Flexible scheduling</li>
+                    </ul>
+                    <a href="#contact" class="btn btn-primary">Enroll Now</a>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 30px; color: var(--golden); font-weight: 600;">✓ Payment in installments is allowed</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-tag">Get In Touch</p>
+                <h2 class="section-title">Contact Us Today</h2>
+                <p class="section-description">Ready to start your learning journey? Reach out to us!</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Nairobi, Kenya</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <h4>Call Us</h4>
+                            <p><a href="tel:0119046246" style="color: inherit; text-decoration: none;">0119 046 246</a></p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <h4>Email Us</h4>
+                            <p>info@nexumtraining.co.ke</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div>
+                            <h4>Working Hours</h4>
+                            <p>Mon - Fri: 8:00 AM - 6:00 PM<br>Sat: 9:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label>Full Name *</label>
+                            <input type="text" required placeholder="Your name">
+                        </div>
+                        <div class="form-group">
+                            <label>Email *</label>
+                            <input type="email" required placeholder="your.email@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Phone *</label>
+                            <input type="tel" required placeholder="0712345678">
+                        </div>
+                        <div class="form-group">
+                            <label>Course of Interest *</label>
+                            <select required>
+                                <option value="">Select a course</option>
+                                <option>Computer Packages</option>
+                                <option>Language Courses</option>
+                                <option>Holiday Tuition</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea placeholder="Tell us more about your learning goals..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#courses">Courses</a>
+                <a href="#pricing">Pricing</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <p style="color: var(--cream); margin-top: 20px;">
+                © 2025 NEXUM Training Centre. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
